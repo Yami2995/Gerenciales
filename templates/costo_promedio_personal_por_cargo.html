@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+
+{% block title %}Costo promedio mensual de personal por cargo{% endblock %}
+
+{% block main_area %}
+    <h3>Costo promedio mensual de personal por cargo (8h/dia)</h3>
+
+    <hr>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Nombre de cargo</th>
+          <th scope="col">Sueldo mensual</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for elem in data %}
+        <tr>
+          <td>{{ elem.0 }}</td>
+          <td>{{ elem.1 }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}

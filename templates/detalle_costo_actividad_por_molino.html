@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+
+{% block title %}Detalle de costo por actividad por cada molino{% endblock %}
+
+{% block main_area %}
+    <h3>Detalle de costo por actividad por cada molino</h3>
+
+    <hr>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Molino</th>
+          <th scope="col">Actividad</th>
+          <th scope="col">Monto</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for elem in data %}
+        <tr>
+          <td>{{ elem.0 }}</td>
+          <td>{{ elem.1 }}</td>
+          <td>{{ elem.2 }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}

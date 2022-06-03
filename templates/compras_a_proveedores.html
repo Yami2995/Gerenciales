@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+
+{% block title %}Cantidad de compras a proveedores y su monto total{% endblock %}
+
+{% block main_area %}
+    <h3>Cantidad de compras a proveedores y su monto total</h3>
+
+    <hr>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Proveedor</th>
+          <th scope="col">Cantidad de compras</th>
+          <th scope="col">Monto total de compras</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for elem in data %}
+        <tr>
+          <td>{{ elem.0 }}</td>
+          <td>{{ elem.1 }}</td>
+          <td>{{ elem.2 }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+
+{% block title %}Costos totales por categoria{% endblock %}
+
+{% block main_area %}
+    <h3>Costos totales por categoria</h3>
+
+    <hr>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Categoria</th>
+          <th scope="col">Costo total</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for elem in data %}
+        <tr>
+          <td>{{ elem.0 }}</td>
+          <td>{{ elem.1 }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}
