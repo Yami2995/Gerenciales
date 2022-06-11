@@ -1,26 +1,37 @@
 {% extends 'index.html' %}
+{% load static %}
+
+{% block head_list %}
+<link href="{% static 'css/mystyle.css' %}" rel="stylesheet" />
+<script src="{% static 'js/report.js' %}"></script>
+{% endblock %}
 
 {% block title %}Costos totales por categoria{% endblock %}
 
 {% block main_area %}
-    <h3>Costos totales por categoria</h3>
+<br>
+    <h3>COSTOS TOTALES POR CATEGORÍA</h3>
 
-    <hr>
+    <hr><br>
+    <div class="card-primary" >
+      <div class="card-body">
+        <table id="example" class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col"><div align="center">CATEGORÍA</div></th>
+              <th scope="col"><div align="left">COSTO TOTAL</div></th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for elem in data %}
+            <tr>
+              <td><div align="left" style="font-size: 18px;">{{ elem.0 }}</div></td>
+              <td><div align="left" style="font-size: 18px;"> $ {{ elem.1 }}</div></td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Categoria</th>
-          <th scope="col">Costo total</th>
-        </tr>
-      </thead>
-      <tbody>
-      {% for elem in data %}
-        <tr>
-          <td>{{ elem.0 }}</td>
-          <td>{{ elem.1 }}</td>
-        </tr>
-      {% endfor %}
-      </tbody>
-    </table>
 {% endblock %}

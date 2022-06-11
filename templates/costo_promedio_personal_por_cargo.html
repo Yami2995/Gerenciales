@@ -1,26 +1,38 @@
 {% extends 'index.html' %}
+{% load static %}
+
+{% block head_list %}
+<link href="{% static 'css/mystyle.css' %}" rel="stylesheet" />
+<script src="{% static 'js/report.js' %}"></script>
+{% endblock %}
 
 {% block title %}Costo promedio mensual de personal por cargo{% endblock %}
 
 {% block main_area %}
-    <h3>Costo promedio mensual de personal por cargo (8h/dia)</h3>
 
-    <hr>
+<br>
+    <h3>COSTO PROMEDIO MENSUAL DE PERSONAL POR CARGO (8h/dia)</h3>
 
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Nombre de cargo</th>
-          <th scope="col">Sueldo mensual</th>
-        </tr>
-      </thead>
-      <tbody>
-      {% for elem in data %}
-        <tr>
-          <td>{{ elem.0 }}</td>
-          <td>{{ elem.1 }}</td>
-        </tr>
-      {% endfor %}
-      </tbody>
-    </table>
+    <hr><br>
+    <div class="card-primary" >
+      <div class="card-body">
+        <table id="example" class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col"><div align="center">NOMBRE DEL CARGO</div></th>
+              <th scope="col"><div align="center">SUELDO MENSUAL</div></th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for elem in data %}
+            <tr>
+              <td><div align="left" style="font-size: 18px;">   {{ elem.0 }}</div></td>
+              <td><div align="center"  style="font-size: 18px;"> {{ elem.1 }}</div></td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
 {% endblock %}

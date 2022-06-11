@@ -1,26 +1,38 @@
 {% extends 'index.html' %}
+{% load static %}
+
+{% block head_list %}
+<link href="{% static 'css/mystyle.css' %}" rel="stylesheet" />
+<script src="{% static 'js/report.js' %}"></script>
+{% endblock %}
 
 {% block title %}Promedio de costo de actividades por molino{% endblock %}
 
+
 {% block main_area %}
-    <h3>Promedio de costo de actividades por molino</h3>
+<br>
+    <h3>COSTO PROMEDIO DE ACTIVIDADES POR MOLINO </h3>
 
-    <hr>
+    <hr><br>
+    <div class="card-primary" >
+      <div class="card-body">
+        <table id="example" class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col"><div align="center">NOMBRE DEL MOLINO</div></th>
+              <th scope="col"><div align="center">COSTO PROMEDIO DE ACTIVIDADES</div></th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for elem in data %}
+            <tr>
+              <td><div align="center" style="font-size: 18px;">   {{ elem.0 }}</div></td>
+              <td><div align="center" style="font-size: 18px;">   $ {{ elem.1 }}</div></td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Molino</th>
-          <th scope="col">Costo de actividades</th>
-        </tr>
-      </thead>
-      <tbody>
-      {% for elem in data %}
-        <tr>
-          <td>{{ elem.0 }}</td>
-          <td>{{ elem.1 }}</td>
-        </tr>
-      {% endfor %}
-      </tbody>
-    </table>
 {% endblock %}

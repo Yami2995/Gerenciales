@@ -1,28 +1,40 @@
 {% extends 'index.html' %}
+{% load static %}
+
+{% block head_list %}
+<link href="{% static 'css/mystyle.css' %}" rel="stylesheet" />
+<script src="{% static 'js/report.js' %}"></script>
+{% endblock %}
+
 
 {% block title %}Cantidad de compras a proveedores y su monto total{% endblock %}
 
 {% block main_area %}
-    <h3>Cantidad de compras a proveedores y su monto total</h3>
+<br>
+    <h3>CANTIDAD Y MONTO TOTAL DE COMPRAS  POR PROVEEDOR </h3>
 
-    <hr>
+    <hr><br>
+    <div class="card-primary" >
+      <div class="card-body">
+        <table id="example" class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col"><div align="center">PROVEEDOR</div></th>
+              <th scope="col"><div align="center">CANTIDAD DE COMPRAS</div></th>
+              <th scope="col"><div align="left">MONTO TOTAL DE COMPRA</div></th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for elem in data %}
+            <tr>
+              <td><div align="left" style="font-size: 18px;">   {{ elem.0 }}</div></td>
+              <td><div align="center" style="font-size: 18px;"> {{ elem.1 }}</div></td>
+              <td><div align="left" style="font-size: 18px;">   $ {{ elem.2 }}</div></td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Proveedor</th>
-          <th scope="col">Cantidad de compras</th>
-          <th scope="col">Monto total de compras</th>
-        </tr>
-      </thead>
-      <tbody>
-      {% for elem in data %}
-        <tr>
-          <td>{{ elem.0 }}</td>
-          <td>{{ elem.1 }}</td>
-          <td>{{ elem.2 }}</td>
-        </tr>
-      {% endfor %}
-      </tbody>
-    </table>
 {% endblock %}

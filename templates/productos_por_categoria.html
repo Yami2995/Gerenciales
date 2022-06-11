@@ -1,26 +1,45 @@
 {% extends 'index.html' %}
+{% load static %}
+
+{% block head_list %}
+    <!-- <link rel="stylesheet" href="{% static 'lib/datatables-1.10.20/plugins/buttons-1.6.1/css/buttons.bootstrap.min.css' %}"/>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/buttons-1.6.1/js/dataTables.buttons.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/jszip-2.5.0/jszip.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/pdfmake-0.1.36/pdfmake.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/pdfmake-0.1.36/vfs_fonts.js' %}" type="text/javascript"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/buttons-1.6.1/js/buttons.html5.min.js' %}" type="text/javascript"></script> -->
+    <link href="{% static 'css/mystyle.css' %}" rel="stylesheet" />
+    <script src="{% static 'js/report.js' %}"></script>
+{% endblock %}
+
 
 {% block title %}Cantidad de productos por categoria{% endblock %}
 
 {% block main_area %}
-    <h3>Cantidad de productos por categoria</h3>
+    <br>
+    <h3>CANTIDAD DE PRODUCTOS POR CATEGORÍA</h3>
 
-    <hr>
+    <hr><br>
 
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Categoria</th>
-          <th scope="col">Cantidad de productos</th>
-        </tr>
-      </thead>
-      <tbody>
-      {% for elem in data %}
-        <tr>
-          <td>{{ elem.0 }}</td>
-          <td>{{ elem.1 }}</td>
-        </tr>
-      {% endfor %}
-      </tbody>
-    </table>
+    <div class="card-primary" >
+      <div class="card-body">
+        <table id="example" class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col"><div align="center">CATEGORÍA</div></th>
+              <th scope="col"><div align="center">CANTIDAD DE PRODUCTOS</div></th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for elem in data %}
+            <tr>
+              <td><div align="left" style="font-size: 18px;">{{ elem.0 }}</div></td>
+              <td><div align="center" style="font-size: 18px;">{{ elem.1 }}</div></td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
 {% endblock %}
