@@ -16,9 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from generalModule.views import index
+from django.contrib.auth.views import LoginView, LogoutView
+from generalModule.forms import CustomLoginForm
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
-    path('general/', include('generalModule.urls'))
+    path('general/', include('generalModule.urls')),
+    path('login/', LoginView.as_view(
+        authentication_form=CustomLoginForm,
+        redirect_authenticated_user=True
+    ), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
 ]

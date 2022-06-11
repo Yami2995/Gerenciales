@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from django.db import connection
+from django.contrib.auth.decorators import login_required, permission_required
 
 
+@login_required
 def index(request):
     return render(request, 'index.html')
 
 
+@login_required
 def productos_por_categoria(request):
     with connection.cursor() as cursor:
         query = """
@@ -24,6 +27,7 @@ def productos_por_categoria(request):
     return render(request, 'productos_por_categoria.html', context=contexto)
 
 
+@login_required
 def costos_totales_por_categoria(request):
     with connection.cursor() as cursor:
         query = """
@@ -41,6 +45,7 @@ def costos_totales_por_categoria(request):
     return render(request, 'costos_totales_por_categoria.html', context=contexto)
 
 
+@login_required
 def compras_a_proveedores(request):
     with connection.cursor() as cursor:
         query = """
@@ -59,6 +64,7 @@ def compras_a_proveedores(request):
     return render(request, 'compras_a_proveedores.html', context=contexto)
 
 
+@login_required
 def detalles_compras_a_proveedores(request):
     with connection.cursor() as cursor:
         query = """
@@ -77,6 +83,7 @@ def detalles_compras_a_proveedores(request):
     return render(request, 'detalle_compras_a_proveedores.html', context=contexto)
 
 
+@login_required
 def promedio_costo_actividades_por_molino(request):
     with connection.cursor() as cursor:
         query = """
@@ -94,6 +101,7 @@ def promedio_costo_actividades_por_molino(request):
     return render(request, 'promedio_costo_actividades_por_molino.html', context=contexto)
 
 
+@login_required
 def detalle_costo_actividad_por_molino(request):
     with connection.cursor() as cursor:
         query = """
@@ -113,6 +121,7 @@ def detalle_costo_actividad_por_molino(request):
     return render(request, 'detalle_costo_actividad_por_molino.html', context=contexto)
 
 
+@login_required
 def costo_promedio_personal_por_cargo(request):
     with connection.cursor() as cursor:
         query = """

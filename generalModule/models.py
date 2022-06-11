@@ -167,3 +167,12 @@ class GestionCompra(models.Model):
     class Meta:
         db_table = 'GestionCompras'
 
+
+class PermisosPersonalizados(models.Model):
+    class Meta:
+        db_table = 'PermisosPersonalizados'
+        permissions = [
+            ('usuario_estandar', 'Usuario estandar'),
+            ('usuario_resumen', 'Usuario con reportes resumidos'),
+            ('usuario_detalle', 'Usuario con reportes detallados')
+        ]
